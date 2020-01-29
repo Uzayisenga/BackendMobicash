@@ -37,6 +37,11 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
   end
+  def generate_pdf
+    @customers = Customer.all
+        pdf = CustomerPdf.new(@customers)
+        send_data pdf.render, filename: "pdfdocument.pdf",type: "application/pdf",disposition: "inline"
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
