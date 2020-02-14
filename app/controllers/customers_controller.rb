@@ -37,6 +37,12 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
   end
+  def edit
+    @customer = Customer.find(params[:id])  
+  end
+  def show   
+    @customer = Customer.find(params[:id])   
+  end   
   def generate_pdf
     @customers = Customer.all
         pdf = CustomerPdf.new(@customers)
